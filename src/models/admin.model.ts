@@ -57,12 +57,12 @@ adminSchema.pre('save', async function (next) {
     next();
   });
   
-//   adminSchema.methods.changedPasswordAfter = function (JWTTimestamp: number) {
+//   adminSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
 //     if (this.passwordChangedAt) {
-//       const changedTimestamp: number = parseInt(
+//       const changedTimestamp = String(parseInt(
 //         this.passwordChangedAt.getTime() / 1000,
 //         10
-//       );
+//       ));
 //       return JWTTimestamp < changedTimestamp;
 //     }
 //     // Password not changed
