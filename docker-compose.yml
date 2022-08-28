@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  mock-premier-league-web_app:
+    build: .
+    ports:
+    - 2001:${PORT}
