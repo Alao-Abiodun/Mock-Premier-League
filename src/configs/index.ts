@@ -3,7 +3,7 @@ dotenv.config();
 
 export const PORT = process.env.PORT || 2004;
 
-export const MONGO_URI = 'mongodb://localhost:27017/mock_premier_league_db';
+export const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://Alao-Abiodun:alao1996@cluster0.fpzmt.mongodb.net/mock_premier_league_db?retryWrites=true&w=majority';
 
 export const ACCESS_TOKEN_SECRET = 'sksksksk';
 

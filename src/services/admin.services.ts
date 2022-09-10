@@ -1,5 +1,6 @@
 import { Admin } from '../models';
 import bcrypt from 'bcryptjs';
+import argon2 from 'argon2';
 
 
 class AdminService {
@@ -8,7 +9,7 @@ class AdminService {
         console.log('Admin Service =====')
         const { firstName, lastName, email, password } = data;
 
-        const hashPassword = await bcrypt.hash(password, 10);
+        const hashPassword = await argon2.hash(password);
 
         const newAdmin = await Admin.create({firstName, lastName, email, password: hashPassword});
         
@@ -20,11 +21,15 @@ class AdminService {
 
         const adminExist = await Admin.findOne({ email});
 
+        console.log(adminExist);
+
         if (!adminExist) {
             throw new Error('admin details does not exist');
         }
 
-        const isPasswordCorrect = await bcrypt.compare(password, adminExist.password);
+        const isPasswordCorrect = await argon2.verify(adminExist.password, password);
+
+        console.log(isPasswordCorrect)
 
         
 

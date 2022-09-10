@@ -30,4 +30,6 @@ app.listen(PORT, () => {
     connectDB();
 })
 
+export { app };
+
 
